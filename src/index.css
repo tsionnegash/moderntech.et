@@ -1,0 +1,231 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Light theme - Beige background with green and golden accents */
+    --background: 35 33% 89%; /* Light beige #ECE5DB */
+    --foreground: 156 51% 15%; /* Dark text */
+
+    --card: 0 0% 100%;
+    --card-foreground: 156 51% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 156 51% 15%;
+
+    --primary: 156 51% 20%; /* Dark green #194C39 */
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 35 70% 47%; /* Golden brown #CE8624 */
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 35 33% 85%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 24 78% 39%; /* Orange #B25416 */
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 156 20% 70%;
+    --input: 156 20% 90%;
+    --ring: 156 51% 20%;
+
+    --radius: 0.75rem;
+
+    /* Theme colors based on provided palette */
+    --pink: 156 51% 20%; /* Using dark green as primary */
+    --pink-glow: 156 51% 35%;
+    --pink-soft: 156 30% 85%;
+    --golden: 35 70% 47%; /* Golden brown */
+    --golden-glow: 35 80% 60%;
+    --golden-soft: 35 50% 80%;
+
+    /* Gradients */
+    --gradient-pink: linear-gradient(
+      135deg,
+      hsl(156 51% 20%),
+      hsl(156 51% 35%)
+    );
+    --gradient-golden: linear-gradient(
+      135deg,
+      hsl(35 70% 47%),
+      hsl(35 80% 60%)
+    );
+    --gradient-hero: linear-gradient(135deg, hsl(35 33% 89%), hsl(35 33% 95%));
+
+    /* Shadows */
+    --shadow-pink: 0 0 20px hsl(156 51% 20% / 0.3);
+    --shadow-golden: 0 0 20px hsl(35 70% 47% / 0.3);
+    --shadow-glow: 0 0 40px hsl(35 80% 60% / 0.4);
+  }
+
+  .dark {
+    /* Dark theme - Deep dark background with green and golden highlights */
+    --background: 156 51% 8%; /* Very dark green */
+    --foreground: 0 0% 98%;
+
+    --card: 156 40% 12%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 156 40% 12%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 156 51% 25%; /* Dark green */
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 35 70% 47%; /* Golden brown */
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 156 30% 15%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 24 78% 50%; /* Brighter orange for dark mode */
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 156 30% 20%;
+    --input: 156 30% 18%;
+    --ring: 35 70% 47%;
+
+    /* Theme colors for dark mode */
+    --pink: 156 51% 30%;
+    --pink-glow: 156 51% 45%;
+    --pink-soft: 156 30% 20%;
+    --golden: 35 70% 55%;
+    --golden-glow: 35 80% 65%;
+    --golden-soft: 35 50% 25%;
+
+    /* Gradients for dark mode */
+    --gradient-pink: linear-gradient(
+      135deg,
+      hsl(156 51% 30%),
+      hsl(156 51% 45%)
+    );
+    --gradient-golden: linear-gradient(
+      135deg,
+      hsl(35 70% 55%),
+      hsl(35 80% 65%)
+    );
+    --gradient-hero: linear-gradient(135deg, hsl(156 51% 8%), hsl(156 40% 12%));
+
+    /* Enhanced shadows for dark mode */
+    --shadow-pink: 0 0 30px hsl(156 51% 30% / 0.4);
+    --shadow-golden: 0 0 30px hsl(35 70% 55% / 0.5);
+    --shadow-glow: 0 0 60px hsl(35 80% 65% / 0.6);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .golden-glow {
+    box-shadow: var(--shadow-golden);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .golden-glow:hover {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .pink-glow {
+    box-shadow: var(--shadow-pink);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .pink-glow:hover {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .golden-text {
+    background: var(--gradient-golden);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .pink-text {
+    background: var(--gradient-pink);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-orbit {
+    animation: orbit 20s linear infinite;
+  }
+
+  .flip-card {
+    perspective: 1000px;
+  }
+
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+  }
+
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .flip-card-front,
+  .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 0.75rem;
+  }
+
+  .flip-card-back {
+    transform: rotateY(180deg);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes orbit {
+  0% {
+    transform: rotate(0deg) translateX(100px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translateX(100px) rotate(-360deg);
+  }
+}
