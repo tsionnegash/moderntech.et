@@ -1,15 +1,7 @@
 import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  ChevronLeft,
-  ChevronRight,
-  Phone,
-  Mail,
-} from "lucide-react";
-import { useRef } from "react";
+import { ArrowRight, Phone, Mail } from "lucide-react";
+import { useRef, useEffect } from "react";
 
-// All logos are directly in src/assets (no subfolder)
-// Update the file extensions if they are .svg, .jpg, etc.
 import ethioTelecomLogo from "@/assets/ethio-telecom.png";
 import safaricomLogo from "@/assets/safaricom.png";
 import ecaLogo from "@/assets/eca.png";
@@ -112,13 +104,45 @@ const partners = [
 const Partners = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  const scrollLeft = () => {
-    scrollContainerRef.current?.scrollBy({ left: -360, behavior: "smooth" });
-  };
+  // Auto-scroll with pause on hover
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
 
-  const scrollRight = () => {
-    scrollContainerRef.current?.scrollBy({ left: 360, behavior: "smooth" });
-  };
+    let animationId: number;
+    let position = container.scrollLeft;
+
+    const scroll = () => {
+      position += 1; // Adjust speed: 1 = slow, 2 = faster
+      container.scrollLeft = position;
+
+      // Seamless loop using duplication
+      if (position >= container.scrollWidth / 2) {
+        position = 0;
+      }
+
+      animationId = requestAnimationFrame(scroll);
+    };
+
+    const startScrolling = () => {
+      animationId = requestAnimationFrame(scroll);
+    };
+
+    const stopScrolling = () => {
+      cancelAnimationFrame(animationId);
+    };
+
+    startScrolling();
+
+    container.addEventListener("mouseenter", stopScrolling);
+    container.addEventListener("mouseleave", startScrolling);
+
+    return () => {
+      cancelAnimationFrame(animationId);
+      container.removeEventListener("mouseenter", stopScrolling);
+      container.removeEventListener("mouseleave", startScrolling);
+    };
+  }, []);
 
   return (
     <section
@@ -140,41 +164,24 @@ const Partners = () => {
           </p>
         </motion.div>
 
-        {/* Partners Carousel */}
+        {/* Carousel - No arrows */}
         <div className="relative mt-4">
-          {/* Left Arrow */}
-          <button
-            onClick={scrollLeft}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-background/95 backdrop-blur-md rounded-full p-4 shadow-2xl hover:scale-110 transition-all"
-            aria-label="Scroll left"
-          >
-            <ChevronLeft className="w-10 h-10 text-foreground" />
-          </button>
-
-          {/* Right Arrow */}
-          <button
-            onClick={scrollRight}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-accent/95 backdrop-blur-md rounded-full p-4 shadow-2xl hover:scale-110 transition-all"
-            aria-label="Scroll right"
-          >
-            <ChevronRight className="w-10 h-10 text-white" />
-          </button>
-
+          {/* Duplicated content for seamless infinite auto-scroll */}
           <div
             ref={scrollContainerRef}
-            className="flex gap-8 overflow-x-auto pb-6 scrollbar-hide px-16 snap-x"
+            className="flex gap-8 overflow-x-hidden pb-6 px-16"
           >
+            {/* First set */}
             {partners.map((partner, index) => (
               <motion.div
-                key={partner.name}
+                key={`first-${index}`}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ scale: 1.05, y: -10 }}
-                className="flex-shrink-0 w-[340px] bg-card rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border border-border/50 group snap-center"
+                className="flex-shrink-0 w-[340px] bg-card rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border border-border/50 group"
               >
-                {/* Logo */}
                 <div className="h-56 bg-white flex items-center justify-center p-12">
                   <img
                     src={partner.logo}
@@ -182,8 +189,6 @@ const Partners = () => {
                     className="max-w-full max-h-full object-contain"
                   />
                 </div>
-
-                {/* Content */}
                 <div className="p-6">
                   <h3 className="font-bold text-xl text-foreground mb-3">
                     {partner.name}
@@ -191,8 +196,46 @@ const Partners = () => {
                   <p className="text-sm text-muted-foreground mb-6 line-clamp-4">
                     {partner.description}
                   </p>
+                  {partner.link ? (
+                    <a
+                      href={partner.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-accent font-medium text-sm flex items-center gap-2 hover:gap-4 transition-all"
+                    >
+                      Visit Website
+                      <ArrowRight className="w-4 h-4" />
+                    </a>
+                  ) : (
+                    <span className="text-muted-foreground text-sm">
+                      Official website not available
+                    </span>
+                  )}
+                </div>
+              </motion.div>
+            ))}
 
-                  {/* Visit Website */}
+            {/* Second set - duplicate for infinite loop */}
+            {partners.map((partner, index) => (
+              <motion.div
+                key={`second-${index}`}
+                whileHover={{ scale: 1.05, y: -10 }}
+                className="flex-shrink-0 w-[340px] bg-card rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border border-border/50 group"
+              >
+                <div className="h-56 bg-white flex items-center justify-center p-12">
+                  <img
+                    src={partner.logo}
+                    alt={`${partner.name} logo`}
+                    className="max-w-full max-h-full object-contain"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="font-bold text-xl text-foreground mb-3">
+                    {partner.name}
+                  </h3>
+                  <p className="text-sm text-muted-foreground mb-6 line-clamp-4">
+                    {partner.description}
+                  </p>
                   {partner.link ? (
                     <a
                       href={partner.link}
@@ -234,7 +277,6 @@ const Partners = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            {/* Call Button */}
             <motion.a
               href="tel:+251911256838"
               whileHover={{ scale: 1.05 }}
@@ -245,7 +287,6 @@ const Partners = () => {
               Contact us
             </motion.a>
 
-            {/* Email Button */}
             <motion.a
               href="mailto:info@moderntech.et?subject=Partnership%20Inquiry&body=Hello%20Moderntech%20Team,%0A%0AI%20am%20interested%20in%20exploring%20partnership%20opportunities.%0A%0ABest%20regards,"
               whileHover={{ scale: 1.05 }}

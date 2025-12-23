@@ -1,12 +1,67 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { MapPin, Clock, ChevronDown, ArrowRight } from "lucide-react";
+import {
+  MapPin,
+  Clock,
+  ChevronDown,
+  ArrowRight,
+  User,
+  Mail,
+  Phone,
+  FileText,
+} from "lucide-react";
 import { useState } from "react";
 
 const Career = () => {
   const [expanded, setExpanded] = useState(false);
+  const [showForm, setShowForm] = useState(false);
+
+  // Form state
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    cvLink: "",
+    message: "",
+  });
 
   const handleToggle = () => {
     setExpanded(!expanded);
+  };
+
+  const handleApplyClick = () => {
+    setShowForm(true);
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const subject = encodeURIComponent(
+      "Job Application - Telecom Engineer (Nokia Ethiopia)"
+    );
+    const body = encodeURIComponent(
+      `Dear Moderntech Hiring Team,\n\n` +
+        `I am applying for the Telecom Engineer position (Nokia Ethiopia).\n\n` +
+        `Name: ${formData.name}\n` +
+        `Email: ${formData.email}\n` +
+        `Phone: ${formData.phone}\n` +
+        `${formData.cvLink ? `CV Link: ${formData.cvLink}\n` : ""}` +
+        `\nMessage:\n${formData.message}\n\n` +
+        `Best regards,\n${formData.name}`
+    );
+
+    window.open(
+      `mailto:careers@moderntech.et?subject=${subject}&body=${body}`,
+      "_blank"
+    );
+
+    // Scroll to contact section
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    }
+
+    setShowForm(false);
+    setFormData({ name: "", email: "", phone: "", cvLink: "", message: "" });
   };
 
   return (
@@ -109,25 +164,156 @@ const Career = () => {
                       ))}
                     </ul>
 
-                    {/* Apply Now Button - Sends email with pre-filled CV request */}
-                    <motion.a
-                      href="mailto:careers@moderntech.et?subject=Application%20-%20Telecom%20Engineer%20(Nokia%20Ethiopia)&body=Dear%20Moderntech%20Hiring%20Team,%0A%0AI%20am%20applying%20for%20the%20Telecom%20Engineer%20position%20(Nokia%20Ethiopia).%0A%0APlease%20find%20my%20CV%20attached.%0A%0ABest%20regards,"
+                    {/* Apply Now Button */}
+                    <motion.button
+                      onClick={handleApplyClick}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       className="inline-flex items-center gap-3 px-8 py-4 bg-accent text-accent-foreground rounded-xl font-bold shadow-lg hover:shadow-xl transition-all"
                     >
                       Apply Now
                       <ArrowRight className="w-5 h-5" />
-                    </motion.a>
+                    </motion.button>
                   </div>
                 </motion.div>
               )}
             </AnimatePresence>
           </motion.div>
         </div>
-
-        {/* Removed the "Don't see your ideal role?" CTA as requested */}
       </div>
+
+      {/* Application Form Modal - Back to centered card style (like the first card) */}
+      <AnimatePresence>
+        {showForm && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            onClick={() => setShowForm(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              className="bg-card border border-border rounded-2xl p-6 md:p-8 max-w-lg w-full shadow-2xl max-h-[90vh] overflow-y-auto"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <h3 className="text-2xl font-bold text-foreground mb-6 text-center">
+                Apply for Telecom Engineer (Nokia Ethiopia)
+              </h3>
+
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <div>
+                  <label className="flex items-center gap-2 text-sm font-medium text-foreground mb-1">
+                    <User className="w-4 h-4" />
+                    Full Name
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={formData.name}
+                    onChange={(e) =>
+                      setFormData({ ...formData, name: e.target.value })
+                    }
+                    className="w-full px-4 py-3 rounded-lg border border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition"
+                    placeholder="Your full name"
+                  />
+                </div>
+
+                <div>
+                  <label className="flex items-center gap-2 text-sm font-medium text-foreground mb-1">
+                    <Mail className="w-4 h-4" />
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    value={formData.email}
+                    onChange={(e) =>
+                      setFormData({ ...formData, email: e.target.value })
+                    }
+                    className="w-full px-4 py-3 rounded-lg border border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition"
+                    placeholder="your.email@example.com"
+                  />
+                </div>
+
+                <div>
+                  <label className="flex items-center gap-2 text-sm font-medium text-foreground mb-1">
+                    <Phone className="w-4 h-4" />
+                    Phone Number
+                  </label>
+                  <input
+                    type="tel"
+                    required
+                    value={formData.phone}
+                    onChange={(e) =>
+                      setFormData({ ...formData, phone: e.target.value })
+                    }
+                    className="w-full px-4 py-3 rounded-lg border border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition"
+                    placeholder="+251 911 234 567"
+                  />
+                </div>
+
+                <div>
+                  <label className="flex items-center gap-2 text-sm font-medium text-foreground mb-1">
+                    <FileText className="w-4 h-4" />
+                    CV / Resume Link (Optional)
+                  </label>
+                  <input
+                    type="url"
+                    value={formData.cvLink}
+                    onChange={(e) =>
+                      setFormData({ ...formData, cvLink: e.target.value })
+                    }
+                    className="w-full px-4 py-3 rounded-lg border border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition"
+                    placeholder="https://drive.google.com/your-cv"
+                  />
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Paste a public link to your CV
+                  </p>
+                </div>
+
+                <div>
+                  <label className="text-sm font-medium text-foreground mb-1 block">
+                    Cover Message
+                  </label>
+                  <textarea
+                    rows={4}
+                    value={formData.message}
+                    onChange={(e) =>
+                      setFormData({ ...formData, message: e.target.value })
+                    }
+                    className="w-full px-4 py-3 rounded-lg border border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition resize-none"
+                    placeholder="Tell us why you're the perfect fit..."
+                  />
+                </div>
+
+                <div className="flex gap-4 pt-4">
+                  <motion.button
+                    type="submit"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="flex-1 bg-accent text-accent-foreground py-3 rounded-xl font-bold shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2"
+                  >
+                    Open Email to Send Application
+                    <ArrowRight className="w-5 h-5" />
+                  </motion.button>
+
+                  <button
+                    type="button"
+                    onClick={() => setShowForm(false)}
+                    className="px-6 py-3 border border-border rounded-xl font-medium hover:bg-accent/10 transition"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </form>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
