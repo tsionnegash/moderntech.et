@@ -1,11 +1,8 @@
-# robots.txt
 User-agent: Googlebot
 Allow: /
-Crawl-delay: 1
 
 User-agent: Bingbot
 Allow: /
-Crawl-delay: 2
 
 User-agent: Twitterbot
 Allow: /
@@ -13,11 +10,5 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
-# Allow all other bots
 User-agent: *
 Allow: /
-Disallow: /api/*
-Disallow: /admin/*
-
-# Sitemap location
-Sitemap: https://yourdomain.com/sitemap.xml

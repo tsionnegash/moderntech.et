@@ -1,30 +1,47 @@
+import React from "react";
+import Navbar from "@/components/ui/Navbar";
+import Hero from "@/components/ui/Hero";
+import MobileMoney from "@/components/ui/MobileMoney";
+import Services from "@/components/ui/Services";
+import Partners from "@/components/ui/Partners";
+import About from "@/components/ui/About"; // ← About section included
+import Career from "@/components/ui/Career";
+import Contact from "@/components/ui/Contact";
+import Footer from "@/components/ui/Footer";
+import SignalTowerBackground from "@/components/ui/SignalTowerBackground";
 import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { ThemeProvider } from "@/hooks/useTheme";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
 
-const queryClient = new QueryClient();
+export default function App() {
+  return (
+    <>
+      <div className="relative min-h-screen overflow-x-hidden">
+        {/* Full-screen animated signal tower background */}
+        <SignalTowerBackground />
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <ThemeProvider defaultTheme="dark">
-      <TooltipProvider>
+        {/* Content layered on top */}
+        <div className="relative z-10">
+          <Navbar />
+
+          <main>
+            <Hero />
+
+            {/* All sections with theme-aware background */}
+            <div className="bg-background">
+              <MobileMoney />
+              <Services />
+              <Partners />
+              <About /> {/* ← Perfect placement */}
+              <Career />
+              <Contact />
+            </div>
+          </main>
+
+          <Footer />
+        </div>
+
+        {/* Toast notifications */}
         <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </ThemeProvider>
-  </QueryClientProvider>
-);
-
-export default App;
+      </div>
+    </>
+  );
+}

@@ -1,6 +1,6 @@
-# My Portfolio Project
+#moderntech technologies plc Project
 
-A modern, responsive portfolio built with React, TypeScript, and Tailwind CSS.
+A modern, responsive website built with React, TypeScript, and Tailwind CSS.
 
 ## 🚀 Quick Start
 

@@ -2,125 +2,110 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
 
 @layer base {
   :root {
-    /* Light theme - Beige background with green and golden accents */
-    --background: 35 33% 89%; /* Light beige #ECE5DB */
-    --foreground: 156 51% 15%; /* Dark text */
+    --background: 105 100% 98%; /* #F9FFF8 */
+    --foreground: 222 47% 11%;
 
     --card: 0 0% 100%;
-    --card-foreground: 156 51% 15%;
+    --card-foreground: 222 47% 11%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 156 51% 15%;
+    --popover-foreground: 222 47% 11%;
 
-    --primary: 156 51% 20%; /* Dark green #194C39 */
-    --primary-foreground: 0 0% 98%;
+    --primary: 206 83% 68%; /* #69B9F2 */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 35 70% 47%; /* Golden brown #CE8624 */
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
 
-    --muted: 35 33% 85%;
-    --muted-foreground: 0 0% 45%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
 
-    --accent: 24 78% 39%; /* Orange #B25416 */
-    --accent-foreground: 0 0% 98%;
+    --accent: 206 83% 68%; /* #69B9F2 for buttons/nav */
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 156 20% 70%;
-    --input: 156 20% 90%;
-    --ring: 156 51% 20%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 206 83% 68%;
 
     --radius: 0.75rem;
 
-    /* Theme colors based on provided palette */
-    --pink: 156 51% 20%; /* Using dark green as primary */
-    --pink-glow: 156 51% 35%;
-    --pink-soft: 156 30% 85%;
-    --golden: 35 70% 47%; /* Golden brown */
-    --golden-glow: 35 80% 60%;
-    --golden-soft: 35 50% 80%;
+    /* Navigation/Footer background */
+    --nav-bg: 206 83% 68%;
+    --nav-foreground: 0 0% 100%;
 
-    /* Gradients */
-    --gradient-pink: linear-gradient(
-      135deg,
-      hsl(156 51% 20%),
-      hsl(156 51% 35%)
-    );
-    --gradient-golden: linear-gradient(
-      135deg,
-      hsl(35 70% 47%),
-      hsl(35 80% 60%)
-    );
-    --gradient-hero: linear-gradient(135deg, hsl(35 33% 89%), hsl(35 33% 95%));
+    /* Custom tokens */
+    --primary-dark: 206 83% 50%;
+    --accent-light: 206 83% 80%;
+    --accent-glow: 206 83% 68% / 0.3;
+    --card-shadow: 0 4px 20px -4px hsl(206 83% 68% / 0.1);
+    --card-shadow-hover: 0 12px 32px -8px hsl(206 83% 68% / 0.2);
+    --button-shadow: 0 4px 14px 0 hsl(206 83% 68% / 0.4);
 
-    /* Shadows */
-    --shadow-pink: 0 0 20px hsl(156 51% 20% / 0.3);
-    --shadow-golden: 0 0 20px hsl(35 70% 47% / 0.3);
-    --shadow-glow: 0 0 40px hsl(35 80% 60% / 0.4);
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 206 83% 68%;
   }
 
   .dark {
-    /* Dark theme - Deep dark background with green and golden highlights */
-    --background: 156 51% 8%; /* Very dark green */
-    --foreground: 0 0% 98%;
+    --background: 200 70% 56%; /* #47A2D9 */
+    --foreground: 210 40% 98%;
 
-    --card: 156 40% 12%;
-    --card-foreground: 0 0% 98%;
+    --card: 200 60% 45%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 156 40% 12%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 200 60% 45%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 156 51% 25%; /* Dark green */
-    --primary-foreground: 0 0% 98%;
+    --primary: 38 78% 69%; /* #E5BC76 */
+    --primary-foreground: 222 47% 11%;
 
-    --secondary: 35 70% 47%; /* Golden brown */
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 200 50% 50%;
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 156 30% 15%;
-    --muted-foreground: 0 0% 65%;
+    --muted: 200 50% 50%;
+    --muted-foreground: 215 20% 90%;
 
-    --accent: 24 78% 50%; /* Brighter orange for dark mode */
-    --accent-foreground: 0 0% 98%;
+    --accent: 38 78% 69%; /* #E5BC76 for buttons/nav */
+    --accent-foreground: 222 47% 11%;
 
     --destructive: 0 63% 31%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 156 30% 20%;
-    --input: 156 30% 18%;
-    --ring: 35 70% 47%;
+    --border: 200 50% 45%;
+    --input: 200 50% 45%;
+    --ring: 38 78% 69%;
 
-    /* Theme colors for dark mode */
-    --pink: 156 51% 30%;
-    --pink-glow: 156 51% 45%;
-    --pink-soft: 156 30% 20%;
-    --golden: 35 70% 55%;
-    --golden-glow: 35 80% 65%;
-    --golden-soft: 35 50% 25%;
+    /* Navigation/Footer background */
+    --nav-bg: 38 78% 69%;
+    --nav-foreground: 222 47% 11%;
 
-    /* Gradients for dark mode */
-    --gradient-pink: linear-gradient(
-      135deg,
-      hsl(156 51% 30%),
-      hsl(156 51% 45%)
-    );
-    --gradient-golden: linear-gradient(
-      135deg,
-      hsl(35 70% 55%),
-      hsl(35 80% 65%)
-    );
-    --gradient-hero: linear-gradient(135deg, hsl(156 51% 8%), hsl(156 40% 12%));
+    --primary-dark: 38 78% 55%;
+    --accent-light: 38 78% 80%;
+    --accent-glow: 38 78% 69% / 0.3;
+    --card-shadow: 0 4px 20px -4px hsl(0 0% 0% / 0.3);
+    --card-shadow-hover: 0 12px 32px -8px hsl(0 0% 0% / 0.5);
+    --button-shadow: 0 4px 14px 0 hsl(38 78% 69% / 0.4);
 
-    /* Enhanced shadows for dark mode */
-    --shadow-pink: 0 0 30px hsl(156 51% 30% / 0.4);
-    --shadow-golden: 0 0 30px hsl(35 70% 55% / 0.5);
-    --shadow-glow: 0 0 60px hsl(35 80% 65% / 0.6);
+    --sidebar-background: 200 70% 40%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 38 78% 69%;
+    --sidebar-primary-foreground: 222 47% 11%;
+    --sidebar-accent: 200 50% 45%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 200 50% 45%;
+    --sidebar-ring: 38 78% 69%;
   }
 }
 
@@ -130,102 +115,161 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: "Poppins", sans-serif;
   }
 
-  html {
-    scroll-behavior: smooth;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Poppins", sans-serif;
+    @apply font-semibold tracking-tight;
   }
 }
 
 @layer components {
-  .golden-glow {
-    box-shadow: var(--shadow-golden);
-    transition: box-shadow 0.3s ease;
+  .nav-link {
+    @apply relative text-foreground/80 transition-colors duration-300 hover:text-accent;
   }
 
-  .golden-glow:hover {
-    box-shadow: var(--shadow-glow);
+  .nav-link::after {
+    content: "";
+    @apply absolute bottom-0 left-0 h-0.5 w-0 bg-accent transition-all duration-300;
   }
 
-  .pink-glow {
-    box-shadow: var(--shadow-pink);
-    transition: box-shadow 0.3s ease;
+  .nav-link:hover::after {
+    @apply w-full;
   }
 
-  .pink-glow:hover {
-    box-shadow: var(--shadow-glow);
+  .btn-primary {
+    @apply bg-accent text-accent-foreground px-6 py-3 rounded-lg font-medium;
+    @apply transition-all duration-300 ease-out;
+    @apply hover:-translate-y-1 hover:shadow-lg;
+    box-shadow: var(--button-shadow);
   }
 
-  .golden-text {
-    background: var(--gradient-golden);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  .btn-primary:hover {
+    box-shadow: 0 6px 20px 0 hsl(var(--accent) / 0.5);
   }
 
-  .pink-text {
-    background: var(--gradient-pink);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  .card-interactive {
+    @apply bg-card rounded-xl p-6 transition-all duration-300;
+    box-shadow: var(--card-shadow);
   }
 
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
+  .card-interactive:hover {
+    @apply -translate-y-2;
+    box-shadow: var(--card-shadow-hover);
+    border-color: hsl(var(--accent) / 0.5);
   }
 
-  .animate-orbit {
-    animation: orbit 20s linear infinite;
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold text-foreground mb-4;
   }
 
-  .flip-card {
+  .section-subtitle {
+    @apply text-lg text-muted-foreground max-w-2xl;
+  }
+
+  .input-focus {
+    @apply border-2 border-border bg-background rounded-lg px-4 py-3;
+    @apply transition-all duration-300 outline-none;
+    @apply focus:border-accent focus:ring-4 focus:ring-accent/20;
+  }
+
+  .footer-bg {
+    @apply bg-primary text-primary-foreground;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+
+  .nav-footer-bg {
+    background-color: hsl(var(--nav-bg));
+    color: hsl(var(--nav-foreground));
+  }
+}
+
+@layer utilities {
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-slide-in {
+    animation: slideIn 0.4s ease-out forwards;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .delay-100 {
+    animation-delay: 0.1s;
+  }
+  .delay-200 {
+    animation-delay: 0.2s;
+  }
+  .delay-300 {
+    animation-delay: 0.3s;
+  }
+  .delay-400 {
+    animation-delay: 0.4s;
+  }
+  .delay-500 {
+    animation-delay: 0.5s;
+  }
+
+  /* 3D Perspective for flip animations */
+  .perspective-1000 {
     perspective: 1000px;
   }
 
-  .flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
+  /* Slow rotation animation */
+  @keyframes slowRotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
   }
 
-  .flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
-  }
-
-  .flip-card-front,
-  .flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    border-radius: 0.75rem;
-  }
-
-  .flip-card-back {
-    transform: rotateY(180deg);
-  }
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-}
-
-@keyframes orbit {
-  0% {
-    transform: rotate(0deg) translateX(100px) rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg) translateX(100px) rotate(-360deg);
+  .animate-slow-rotate {
+    animation: slowRotate 60s linear infinite;
   }
 }
