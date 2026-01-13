@@ -32,7 +32,7 @@ const About = () => {
             {/* Small Telecom Image - next to the description */}
             <div className="flex-shrink-0">
               <img
-                src="https://play-lh.googleusercontent.com/DC4qDArwqrHOwzeI3k1lVaMKaRUPUGR1ruOw5SrTQhw1r2UQfaBougRG-ZnIYovbww_T=w1052-h592-rw"
+                src="https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/3075998900e0162d90e331637839a9db~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=14579&refresh_token=d93dce0b&x-expires=1768478400&x-signature=qKMPiV7lmNAzBaVJsbvRgP%2BGZiA%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=sg1"
                 alt="Moderntech Technologies Team"
                 className="w-80 h-80 object-cover rounded-xl shadow-2xl border border-border/30"
               />

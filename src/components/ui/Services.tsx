@@ -19,23 +19,23 @@ const services = [
     icon: Smartphone,
     title: "Electronic Voucher Distribution (EVD)",
     shortDescription:
-      "Advanced EVD / Voucher Management System (VMS) for seamless digital airtime and service distribution.",
+      "Advanced EVD / Voucher Management System for seamless digital airtime distribution.",
     whyModerntech: "Why Moderntech for EVD",
     fullDescription:
-      "Electronic Voucher Distribution (EVD), also known as EVD Software, VMS (Voucher Management System), or E-Pin Based Software, is one of Moderntech's flagship solutions. As a major player in the industry nationwide, we deliver one of the most advanced EVD platforms available.",
+      "Electronic Voucher Distribution (EVD), also known as EVD Software or VMS, is one of Moderntech's flagship solutions — delivering one of the most advanced platforms in Ethiopia.",
     benefits: [
       "No production cost of scratch cards",
-      "Simple distribution through mobile operators to multiple channels",
+      "Simple distribution through mobile operators",
       "Minimal lead time – speedy nationwide distribution",
       "Minimal capital outlay – reduced stockholding",
       "Increased stock control – lower or no shrinkage",
-      "Convenience and accessibility in remote areas across Ethiopia's vast terrain",
+      "Convenience in remote areas across Ethiopia",
       "Ease of use for merchants and consumers",
-      "Proof of purchase via paper slip or SMS notification",
-      "Easy financial control and comprehensive audit trails",
-      "Secure encrypted system for management, reconciliation, and consolidation",
+      "Proof of purchase via SMS or slip",
+      "Comprehensive audit trails & financial control",
+      "Secure encrypted system",
       "Real-time sales reporting",
-      "Centralized control of information",
+      "Centralized control",
       "Minimized fraud and theft",
     ],
   },
@@ -43,47 +43,47 @@ const services = [
     icon: Wrench,
     title: "Telecom Implementation Services",
     shortDescription:
-      "End-to-end telecom design, rollout, and maintenance with leading vendors.",
+      "End-to-end telecom design, rollout, and maintenance with top vendors.",
     fullDescription:
-      "Moderntech provides professional telecom design, implementation, configuration, and support services using equipment from top vendors including Ericsson, Nokia, Huawei, ZTE, and others. Our expertise covers new network rollouts, expansions, SWAPs, and upgrades across GSM, GPRS, WCDMA, HSDPA, UMTS, LTE, WiFi, WiMAX, Fiber Optics, and more.",
+      "Professional telecom design, implementation, configuration and support using equipment from Ericsson, Nokia, Huawei, ZTE and more — covering GSM to LTE, fiber, WiFi, and power solutions.",
     servicesList: [
       "Technical Site Survey (TSS) & site audit",
       "Turnkey network deployment",
-      "Telecom site acquisition",
+      "Site acquisition",
       "Equipment installation & commissioning",
-      "Antenna, feeder, and fiber installation",
-      "VSWR testing with Site Master",
-      "Integration & logistic services",
-      "SWAP services (dismantling, packing, transportation)",
+      "Antenna, feeder & fiber installation",
+      "VSWR testing",
+      "Integration & logistics",
+      "SWAP services",
       "Operations & Maintenance (O&M)",
-      "Full fiber optic installation, commissioning & maintenance",
-      "Grid power, generators, hybrid & solar power solutions",
+      "Full fiber optic solutions",
+      "Grid, generator, hybrid & solar power",
     ],
   },
   {
     icon: RadioTower,
     title: "Tower Loading & Co-location",
     shortDescription:
-      "Professional tower assessment and multi-operator site management.",
+      "Expert tower assessment and multi-operator co-location management.",
     fullDescription:
-      "Moderntech offers expert tower loading validation and co-location management services to optimize infrastructure usage and extend asset life.",
+      "Professional tower loading validation and co-location services to optimize infrastructure and extend asset life.",
     details: [
-      "Tower loading validation & life expectancy assessment",
-      "Structural capacity analysis for portfolio optimization",
-      "Avoid costly dismantling and downtime",
-      "Co-location management for multiple operators on shared masts",
-      "Space distribution and strength calculations",
-      "Site planning, construction, and installation deployment",
-      "Documentation and invoice management for operators",
+      "Tower loading validation & life expectancy",
+      "Structural capacity analysis",
+      "Avoid costly dismantling/downtime",
+      "Multi-operator co-location management",
+      "Space distribution & strength calculations",
+      "Site planning & construction",
+      "Documentation & invoicing for operators",
     ],
   },
   {
     icon: Store,
     title: "Moderntech Franchising",
     shortDescription:
-      "Comprehensive franchising solutions for telecom retail and services.",
+      "Proven franchising model for telecom retail and services.",
     fullDescription:
-      "Expand your reach with Moderntech's proven franchising model covering airtime, devices, mobile money, and value-added services.",
+      "Expand your business with our comprehensive franchising solutions covering airtime, devices, mobile money and value-added services.",
     offerings: [
       "Airtime distribution / EVD",
       "Internet packages",
@@ -91,10 +91,8 @@ const services = [
       "Devices & accessories",
       "Facilities management",
       "Mobile Money services",
-      "Service platforms",
       "SIM packs & replacement",
       "Value Added Services (VAS)",
-      "VAS platforms & solutions",
       "Internet TV",
     ],
   },
@@ -102,17 +100,31 @@ const services = [
     icon: Megaphone,
     title: "Branding & Marketing",
     shortDescription:
-      "Nationwide sales, marketing, and brand visibility services.",
+      "Nationwide sales, marketing & brand visibility services.",
     fullDescription:
-      "Leverage Moderntech's extensive network and expertise to maximize product reach and brand presence across Ethiopia.",
+      "Maximize reach and brand presence across Ethiopia with our extensive agent network and marketing expertise.",
     services: [
       "Agent spot placement",
       "Facility painting & modification",
       "Sales resource provision",
       "Product & event promotions",
-      "2,000+ agents nationwide for wide market coverage",
-      "Mass sales & marketing staff deployment on demand",
-      "Short-term promotional campaign management with MNOs",
+      "2,000+ agents nationwide",
+      "Mass sales & marketing staff deployment",
+      "Short-term promotional campaigns with MNOs",
+    ],
+  },
+  {
+    icon: Shield,
+    title: "Work at Height Safety Training",
+    shortDescription:
+      "Essential safety training to protect teams working on towers, poles, and elevated structures.",
+    fullDescription:
+      "SAFETY ISN'T EXPENSIVE, IT'S PRICELESS.\n\nWe help organizations comply with Work at Height regulations by teaching risk assessment, fall protection, control measures, and safe working practices to significantly reduce fall risks.",
+    benefits: [
+      "Fall Arrest Technical Level II (planning, design, classroom + practicals)",
+      "Work at Height Rope Rigging (lifting/lowering loads safely, classroom + practicals)",
+      "Pole Climbing and Ladder Use (safe ascent/descent using gaffs, hooks, belts, ladders)",
+      "Work at Height Introductory + Radio Frequency Awareness (basic height safety + RF hazard awareness for transmitter sites)",
     ],
   },
 ];
@@ -134,7 +146,6 @@ const ServiceCard = ({
       transition={{ delay: index * 0.15, duration: 0.6 }}
       className="relative h-[480px] perspective-1200"
     >
-      {/* 3D Flip Container */}
       <motion.div
         className="relative w-full h-full"
         style={{ transformStyle: "preserve-3d" }}
@@ -146,7 +157,7 @@ const ServiceCard = ({
           damping: 30,
         }}
       >
-        {/* Front Face */}
+        {/* Front */}
         <div
           className="absolute inset-0 backface-hidden bg-card border border-border/50 rounded-2xl p-8 flex flex-col items-center justify-center shadow-xl"
           style={{ backfaceVisibility: "hidden" }}
@@ -166,7 +177,6 @@ const ServiceCard = ({
             {service.shortDescription}
           </p>
 
-          {/* See More Button - Triggers Flip on Click */}
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -178,13 +188,10 @@ const ServiceCard = ({
           </motion.button>
         </div>
 
-        {/* Back Face */}
+        {/* Back */}
         <div
           className="absolute inset-0 backface-hidden bg-gradient-to-br from-primary/10 to-accent/10 border border-accent/30 rounded-2xl p-8 overflow-y-auto shadow-2xl"
-          style={{
-            transform: "rotateY(180deg)",
-            backfaceVisibility: "hidden",
-          }}
+          style={{ transform: "rotateY(180deg)", backfaceVisibility: "hidden" }}
         >
           <div className="space-y-6">
             {service.whyModerntech && (
@@ -193,7 +200,13 @@ const ServiceCard = ({
               </p>
             )}
 
-            <p className="text-foreground leading-relaxed">
+            {service.title === "Work at Height Safety Training" && (
+              <p className="text-2xl font-bold text-red-600 dark:text-red-400 text-center">
+                SAFETY ISN'T EXPENSIVE, IT'S PRICELESS
+              </p>
+            )}
+
+            <p className="text-foreground leading-relaxed whitespace-pre-line">
               {service.fullDescription}
             </p>
 
@@ -244,23 +257,22 @@ const Services = () => {
   return (
     <section
       id="services"
-      className="pt-12 pb-24 bg-secondary/30 relative overflow-hidden" // Reduced top padding
+      className="pt-12 pb-24 bg-secondary/30 relative overflow-hidden"
     >
       <div className="container mx-auto px-4">
-        {/* Header - Removed "Our Services" badge and reduced bottom margin */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-10" // Reduced from mb-16 to mb-10
+          className="text-center mb-10"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
             Comprehensive Technology Solutions
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            From mobile money to enterprise infrastructure, we deliver
-            end-to-end solutions that transform businesses.
+            From mobile money to enterprise infrastructure and personnel safety
+            — we deliver end-to-end solutions.
           </p>
         </motion.div>
 

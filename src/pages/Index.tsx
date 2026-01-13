@@ -6,6 +6,7 @@ import Services from "@/components/Services";
 import Partners from "@/components/Partners";
 import About from "@/components/About";
 import Career from "@/components/Career";
+import Gallery from "@/components/Gallery";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import SignalTowerBackground from "@/components/SignalTowerBackground";
@@ -14,7 +15,6 @@ const Index = () => {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
-    // Check for system preference or saved preference
     const savedTheme = localStorage.getItem("theme");
     const prefersDark = window.matchMedia(
       "(prefers-color-scheme: dark)"
@@ -49,6 +49,7 @@ const Index = () => {
           <Partners />
           <About />
           <Career />
+          <Gallery />
           <Contact />
         </div>
       </main>

@@ -4,8 +4,9 @@ import Hero from "@/components/ui/Hero";
 import MobileMoney from "@/components/ui/MobileMoney";
 import Services from "@/components/ui/Services";
 import Partners from "@/components/ui/Partners";
-import About from "@/components/ui/About"; // ← About section included
+import About from "@/components/ui/About";
 import Career from "@/components/ui/Career";
+import Gallery from "@/components/ui/Gallery"; // ← This line was missing
 import Contact from "@/components/ui/Contact";
 import Footer from "@/components/ui/Footer";
 import SignalTowerBackground from "@/components/ui/SignalTowerBackground";
@@ -30,8 +31,9 @@ export default function App() {
               <MobileMoney />
               <Services />
               <Partners />
-              <About /> {/* ← Perfect placement */}
+              <About />
               <Career />
+              <Gallery /> {/* ← This was missing – now added */}
               <Contact />
             </div>
           </main>

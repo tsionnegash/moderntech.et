@@ -252,7 +252,7 @@ const MobileMoney = () => {
                 className="bg-accent text-accent-foreground px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
                 onClick={() =>
                   window.open(
-                    "https://superapp.ethiomobilemoney.et:38443/customer/mgm/index20251104.html#/?notoolbar=true&CampaignId=MGM1946745172939008&inviterId=1098894111206404&language=en&time=Nov-07-2025-Feb-04-2026",
+                    "https://play.google.com/store/apps/details?id=et.safaricom.mpesa.lifestyle",
                     "_blank",
                     "noopener,noreferrer"
                   )
@@ -273,18 +273,18 @@ const MobileMoney = () => {
 
                   <div className="w-full h-full bg-black rounded-[48px] overflow-hidden relative">
                     <img
-                      src="https://play-lh.googleusercontent.com/GwQXSo33tw3RJLwWdQ9EJFj93JoMx7BNNXz9QPUtzGnttxU2p9s0E_vAFp0Z2Gc9Wx0=w1052-h592-rw"
-                      alt="telebirr App Interface"
+                      src="https://play-lh.googleusercontent.com/4UjRENVtywnKo7NJTN1UZChCdnD72aZ1mUm_67w9kQZfmpwg6Pf4azCL9Oq3143cgK8=w1052-h592-rw"
+                      alt="App Interface"
                       className="w-full h-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
 
                     <div className="absolute bottom-12 left-0 right-0 text-center">
                       <p className="text-white text-3xl font-bold drop-shadow-2xl">
-                        telebirr
+                        M-PESA Business
                       </p>
                       <p className="text-white/80 text-sm drop-shadow-lg">
-                        Mobile Money
+                        Ethiopia
                       </p>
                     </div>
                   </div>
